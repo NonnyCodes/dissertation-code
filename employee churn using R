@@ -1021,3 +1021,24 @@ print(paste("Recall:", confusion_svm$byClass["Recall"]))
 print(paste("F1 Score:", confusion_svm$byClass["F1"]))
 
 
+
+# Load necessary libraries for plotting
+library(caret)
+
+# Plot confusion matrices for each model
+par(mfrow=c(1, 3))  # Set up a grid of 1 row and 3 columns for plotting
+
+# Plot confusion matrix for Logistic Regression
+fourfoldplot(confusion_logistic$table, color = c("#CC6666", "#99CC99"),
+             conf.level = 0, margin = 1, main = "Logistic Regression")
+
+# Plot confusion matrix for XGBoost
+fourfoldplot(confusion_xgb$table, color = c("#CC6666", "#99CC99"),
+             conf.level = 0, margin = 1, main = "XGBoost")
+
+# Plot confusion matrix for SVM
+fourfoldplot(confusion_svm$table, color = c("#CC6666", "#99CC99"),
+             conf.level = 0, margin = 1, main = "SVM")
+
+# Reset plotting parameters
+par(mfrow=c(1,1))
